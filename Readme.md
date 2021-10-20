@@ -24,3 +24,11 @@ int main(int argc, char **argv){
 	auto server = Server(dbc);
 }
 ```` 
+
+# Build
+
+GNU Make is used as the project`s build system.
+
+````git clone https://github.com/sdicke/CPPCouchConnector```
+````cd CPPCouchConnector```
+```make .```
