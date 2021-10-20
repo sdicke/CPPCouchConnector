@@ -4,8 +4,9 @@ CPPCouchConnector is a C++ library, which allow you to interact with couchdb dat
 
 # Dependencies
 
-* [cpr](https://github.com/libcpr/cpr)
-* [jsoncons](https://github.com/danielaparker/jsoncons)
+* [cpr](https://github.com/libcpr/cpr): Must be installed within the search path (/usr/local/ for example)
+* [jsoncons](https://github.com/danielaparker/jsoncons): The header files must be available within the search path (/usr/local/include for example)
+* [libcurl](https://github.com/curl/curl): Must be installed within the search path
 
 # Usage
 
@@ -21,7 +22,6 @@ int main(int argc, char **argv){
 	const std::string _password = "";
 	auto network = std::make_shared<Network>(_server, "5984", _user, _password);
 	auto dbc = std::make_shared<DataBaseConnection>(network);
-	auto server = Server(dbc);
 }
 ```` 
 
