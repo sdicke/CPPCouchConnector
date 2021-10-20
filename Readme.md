@@ -29,6 +29,8 @@ int main(int argc, char **argv){
 
 GNU Make is used as the project`s build system.
 
-````git clone https://github.com/sdicke/CPPCouchConnector```
-````cd CPPCouchConnector```
-```make .```
+```
+git clone https://github.com/sdicke/CPPCouchConnector
+cd CPPCouchConnector
+make .
+```
