@@ -8,6 +8,10 @@ CPPCouchConnector is a C++ library, which allow you to interact with couchdb dat
 * [jsoncons](https://github.com/danielaparker/jsoncons): The header files must be available within the search path (/usr/local/include for example)
 * [libcurl](https://github.com/curl/curl): Must be installed within the search path
 
+# Limitations
+
+This library implements at the moment just implements a minimal part of the API endpoints exposed from couchdb. No of the partitioning features are supported now.
+
 # Usage
 
 ```` 
