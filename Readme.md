@@ -9,7 +9,7 @@ CPPCouchConnector is a C++ library, which allow you to interact with couchdb dat
 
 # Usage
 
-<code>
+```` 
 #include <memory>
 #include <cppcouchconnector/Network.hpp>
 #include <cppcouchconnector/DataBaseConnection.hpp>
@@ -22,4 +22,5 @@ int main(int argc, char **argv){
 	auto network = std::make_shared<Network>(_server, "5984", _user, _password);
 	auto dbc = std::make_shared<DataBaseConnection>(network);
 	auto server = Server(dbc);
-</code>
+}
+```` 
