@@ -9,31 +9,32 @@ TARGET		= /usr/local
 INCDIR		= $(TARGET)/include
 INCTARGET	= $(INCDIR)/cppcouchconnector
 LIBTARGET	= $(TARGET)/lib64
+BINARY		= libcppcouchconnector.so
 
 all: cppcouchconnector
 
-cppcouchconnector: Document.o  Database.o Network.o Server.o DataBaseConnection.o
-		$(CC) $(LIBS) -shared Document.o Database.o Network.o Server.o DataBaseConnection.o -o libcppcouchconnector.so
+cppcouchconnector: Document.o Database.o Network.o Server.o DataBaseConnection.o
+		$(CC) $(LIBS) -shared *.o -o $(BINARY)
 
-Database.o: Database.cpp
+Database.o: Database.hpp Database.cpp
 		$(CALL) -c Database.cpp -o Database.o
 
-DataBaseConnection.o: DataBaseConnection.cpp
+DataBaseConnection.o: DataBaseConnection.hpp DataBaseConnection.cpp
 		$(CALL) -c DataBaseConnection.cpp -o DataBaseConnection.o
 
-Document.o: Document.cpp
+Document.o: Document.hpp Document.cpp
 		$(CALL) -c Document.cpp -o Document.o
 
-Network.o: Network.cpp
+Network.o: Network.hpp Network.cpp
 		$(CALL) -c Network.cpp -o Network.o
 
-Server.o: Server.cpp
+Server.o: Server.hpp Server.cpp
 		$(CALL) -c Server.cpp -o Server.o
 
 install:
 		mkdir -p $(INCTARGET)
 		cp -f *.hpp $(INCTARGET)
-		cp -f libcppcouchconnector.so $(LIBTARGET)
+		cp -f $(BINARY) $(LIBTARGET)
 
 clean:
-		rm *.o libcppcouchconnector.so
+		rm *.o $(BINARY)
