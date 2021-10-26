@@ -33,6 +33,6 @@ namespace CCC {
 			cpr::Response perform(const std::string &path, Method method, const cpr::Body &body = {});
 
 		private:
-			std::string buildURL(const std::string &path);
+			std::string buildURL(const std::string &path) const noexcept;
 	};
 }

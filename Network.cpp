@@ -49,6 +49,6 @@ cpr::Response Network::perform(const std::string &path, Method method, const cpr
 	return response;
 }
 
-std::string Network::buildURL(const std::string &path) {
+std::string Network::buildURL(const std::string &path) const noexcept {
 	return this->data.url + ":"s + this->data.port + "/"s + path;
 }
