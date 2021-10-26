@@ -20,7 +20,6 @@ Server::Meta Server::meta(){
 
 std::vector<Database> Server::databases(const DataBaseConnection::AllDBsOptiions &options) {
 	const auto result = this->data.connection->allDBs(options);
-	std::cout << result << std::endl;
 	std::vector<Database> dbs;
 	for (const auto &current : result.array_range()) {
 		const auto temp = Database(this->data.connection, current.as_string());
