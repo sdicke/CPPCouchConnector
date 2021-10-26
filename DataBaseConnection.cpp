@@ -11,7 +11,7 @@ DataBaseConnection::DataBaseConnection(std::shared_ptr<Network> network) {
 	this->data.network = network;
 }
 
-std::string DataBaseConnection::bool_to_string(const bool value) const {
+std::string DataBaseConnection::bool_to_string(const bool value) const noexcept {
 	if (value) {
 		return "true"s;
 	}

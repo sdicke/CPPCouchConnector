@@ -35,7 +35,7 @@ namespace CCC {
 
 			std::string buildQuery(map kvs) const;
 			json changeDocument(const std::string &name, const std::string &uuid, const std::string revision, const json &content);
-			std::string bool_to_string(const bool value) const;
+			std::string bool_to_string(const bool value) const noexcept;
 
 		public:
 
