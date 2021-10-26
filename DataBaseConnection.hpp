@@ -107,7 +107,7 @@ namespace CCC {
 			json meta();
 			json allDBs(const AllDBsOptiions &options);
 			bool up();
-			json uuids(const unsigned long count = 1);
+			json uuids(unsigned long count = 1);
 			std::string favicon();
 			bool dbExists(const std::string &name);
 			json getDB(const std::string &name);
