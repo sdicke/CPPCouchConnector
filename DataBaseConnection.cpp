@@ -45,7 +45,7 @@ json DataBaseConnection::meta()  {
 }
 
 json DataBaseConnection::allDBs(const DataBaseConnection::AllDBsOptiions &options)  {
-	std::string url = "_all_dbs"s;
+	auto url = "_all_dbs"s;
 	map options_map;
 	if (options.descending) {
 		options_map.insert(std::make_pair("descending"s, bool_to_string(options.descending)));
