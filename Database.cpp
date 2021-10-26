@@ -34,9 +34,8 @@ std::vector<Document> Database::documents() {
 	const auto name = this->data.name;
 	const auto connection = this->data.connection;
 	const auto result = this->data.connection->dbAllDocs(name, json());
-	const auto json = json::parse(result.as_string());
 	std::vector<Document> docs;
-	for (const auto &current : json["rows"s].array_range()){
+	for (const auto &current : result["rows"s].array_range()){
 		const auto uuid = current["id"s].as_string();
 		const auto revision = current["value"s]["rev"s].as_string();
 		const auto temp = Document(uuid, name, revision, connection);
