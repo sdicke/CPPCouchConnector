@@ -1,4 +1,4 @@
-CC			= g++
+CC		= g++
 STANDARD	= -std=c++20
 ERROPTS		= -Wall -Wextra -Werror 
 ADDOPTS		= -O2 -pthread -fstack-protector-strong -fPIC
