@@ -2,6 +2,8 @@
 
 CPPCouchConnector is a C++ library, which allow you to interact with couchdb databases.
 
+Please not that this library is in a alpha state at the moment.
+
 # Dependencies
 
 * [cpr](https://github.com/libcpr/cpr): Must be installed within the search path (/usr/local/ for example)
