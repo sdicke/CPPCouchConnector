@@ -8,7 +8,7 @@ Database::Database(std::shared_ptr<DataBaseConnection> connection, const std::st
 }
 
 Document Database::createDocument(const json &content, std::string uuid) {
-	cpr::Body body(content.as_string().data());
+	cpr::Body body(content.as_string());
 	if (uuid.empty()) {
 		std::vector<std::string> uuids;
 		const auto result = this->data.connection->uuids(1);
