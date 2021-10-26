@@ -38,7 +38,7 @@ std::vector<std::string> Server::uuids(long count) {
 	for (const auto &current : result["uuids"].array_range()){
 		uuids.push_back(current.as_string());
 	}
-	return  uuids;
+	return uuids;
 }
 
 std::string Server::uuid() {
