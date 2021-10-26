@@ -13,10 +13,10 @@ Network::Network(const Arguments &arguments) {
 }
 
 void Network::createSession(const std::string &user, const std::string &password){
-	auto payload = cpr::Payload{{"name"s, user}, {"password"s, password}};
-	auto urls = this->buildURL("_session");
-	auto url = cpr::Url(urls);
-	auto response = cpr::Post(url, payload);
+	const auto payload = cpr::Payload{{"name"s, user}, {"password"s, password}};
+	const auto urls = this->buildURL("_session");
+	const auto url = cpr::Url(urls);
+	const auto response = cpr::Post(url, payload);
 	this->data.cookies = response.cookies;
 }
 
@@ -24,8 +24,8 @@ cpr::Response Network::perform(const std::string &path, Method method, const cpr
 	cpr::Response response;
 	const auto url_string = this->buildURL(path);
 	cpr::Url url(url_string);
-	auto cookies = this->data.cookies;
-	cpr::Header header{{"Content-Type"s, "application/json"s}};
+	const auto cookies = this->data.cookies;
+	const cpr::Header header{{"Content-Type"s, "application/json"s}};
 	switch (method) {
 		case Network::Method::GET:
 			response = cpr::Get(url, body, header, cookies);
