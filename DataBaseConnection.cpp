@@ -233,10 +233,9 @@ bool DataBaseConnection::purgeDoc(const std::string &name, json list){
 }
 
 long DataBaseConnection::maximalNumberOfRevisions(const std::string &name){
-	long count = 0;
 	const auto path = name + "_revs_limit"s;
-	auto result = this->data.network.get()->perform(path, Method::GET, {});
-	count = std::stol(result.text);
+	const auto result = this->data.network.get()->perform(path, Method::GET, {});
+	const auto count = std::stol(result.text);
 	return count;
 }
 
@@ -244,6 +243,6 @@ bool DataBaseConnection::setMaximalNumberOfRevisions(const std::string &name, co
 	const auto path = name + "_revs_limit"s;
 	const auto countString = std::to_string(count);
 	const auto body = cpr::Body(countString);
-	auto result = this->data.network.get()->perform(path, Method::PUT, body);
+	const auto result = this->data.network.get()->perform(path, Method::PUT, body);
 	return result.status_code == 200;
 }
