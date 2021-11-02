@@ -11,11 +11,11 @@ Document Database::createDocument(const json &content, std::string uuid) {
 	cpr::Body body(content.as_string());
 	if (uuid.empty()) {
 		std::vector<std::string> uuids;
-		const auto result = this->data.connection->uuids(1);
+		const auto result = this->data.connection->uuids(1l);
 		for (const auto &current : result.array_range()){
 			uuids.push_back(current.as_string());
 		}
-		const auto uuid = uuids.at(0);
+		const auto uuid = uuids.at(0ul);
 	}
 	const auto result = this->data.connection->createDocument(this->data.name, uuid, body);
 	const auto real_uuid = result["id"s].to_string();

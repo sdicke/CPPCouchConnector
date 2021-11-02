@@ -62,7 +62,7 @@ json DataBaseConnection::allDBs(const DataBaseConnection::AllDBsOptiions &option
 	url += this->buildQuery(options_map);
 	const auto result = this->data.network->perform(url, Method::GET);
 	json json;
-	if (result.status_code == 200) {
+	if (result.status_code == 200l) {
 		json = json::parse(result.text);
 	}
 	return json;
@@ -70,7 +70,7 @@ json DataBaseConnection::allDBs(const DataBaseConnection::AllDBsOptiions &option
 
 bool DataBaseConnection::up()  {
 	const auto result = this->data.network->perform("_up"s, Method::GET);
-	if (result.status_code == 200) {
+	if (result.status_code == 200l) {
 		return true;
 	}
 	return false;
@@ -79,12 +79,12 @@ bool DataBaseConnection::up()  {
 json DataBaseConnection::uuids(unsigned long count)  {
 	const std::string url = "_uuids?count="s + std::to_string(count);
 	const auto result = this->data.network->perform(url, Method::GET);
-	if (result.status_code == 400) {
-		count = (2/3) * count;
+	if (result.status_code == 400l) {
+		count = (2ul/3ul) * count;
 		return this->uuids(count);
 	}
 	json json;
-	if (result.status_code == 200) {
+	if (result.status_code == 200l) {
 		json = json::parse(result.text);
 	}
 	return json;
@@ -97,7 +97,7 @@ std::string DataBaseConnection::favicon()  {
 
 bool DataBaseConnection::dbExists(const std::string &name) {
 	const auto result = this->data.network->perform(name, Method::HEAD);
-	if (result.status_code == 200) {
+	if (result.status_code == 200l) {
 		return true;
 	}
 	return false;
@@ -158,7 +158,7 @@ json DataBaseConnection::dbAllDocs(const std::string &name, const json &selector
 		result = this->data.network->perform(url, Method::POST, payload);
 	}
 	json json;
-	if (result.status_code == 200) {
+	if (result.status_code == 200l) {
 		json = json::parse(result.text);
 	}
 	return json;
@@ -173,7 +173,7 @@ std::pair<json, DataBaseConnection::FindResult> DataBaseConnection::findDocs(con
 	arguments["fields"s] = options.fields;
 	const auto result = this->data.network->perform(url, Method::POST);
 	json json;
-	if (result.status_code == 200) {
+	if (result.status_code == 200l) {
 		json = json::parse(result.text);
 	}
 	FindResult fresult = static_cast<FindResult>(result.status_code);
@@ -195,7 +195,7 @@ json DataBaseConnection::dbDoc(const std::string &name, const std::string &uuid,
 	url += this->buildQuery(options_map);
 	const auto result = this->data.network->perform(url, Method::GET);
 	json json;
-	if (result.status_code == 200) {
+	if (result.status_code == 200l) {
 		json = json::parse(result.text);
 	}
 	return json;
@@ -216,7 +216,7 @@ DataBaseConnection::DeleteDocumentResult DataBaseConnection::deleteDocument(cons
 bool DataBaseConnection::compactDB(const std::string &name){
 	const auto path = name + "/_compact"s;
 	const auto result = this->data.network.get()->perform(path, Method::POST, {});
-	return result.status_code == 202;
+	return result.status_code == 202l;
 }
 
 bool DataBaseConnection::purgeDoc(const std::string &name, json list){
@@ -224,7 +224,7 @@ bool DataBaseConnection::purgeDoc(const std::string &name, json list){
 	auto body = cpr::Body(list.as_string());
 	auto result = this->data.network->perform(path, Method::POST, body);
 	auto status = result.status_code;
-	if (status == 201 || status == 202){
+	if (status == 201l || status == 202l){
 		return true;
 	}
 	else {
@@ -244,5 +244,5 @@ bool DataBaseConnection::setMaximalNumberOfRevisions(const std::string &name, co
 	const auto countString = std::to_string(count);
 	const auto body = cpr::Body(countString);
 	const auto result = this->data.network.get()->perform(path, Method::PUT, body);
-	return result.status_code == 200;
+	return result.status_code == 200l;
 }

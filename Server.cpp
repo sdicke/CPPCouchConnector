@@ -42,7 +42,7 @@ std::vector<std::string> Server::uuids(long count) {
 }
 
 std::string Server::uuid() {
-	return this->uuids(1).at(0);
+	return this->uuids(1ul).at(0ul);
 }
 
 std::string Server::favicon() {

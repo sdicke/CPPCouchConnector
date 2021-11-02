@@ -16,17 +16,17 @@ namespace CCC {
 		private:
 			typedef std::unordered_map<std::string,std::string> map;
 
-			enum Codes {
-				OK = 200,
-				Created = 201,
-				Accepted = 202,
-				NotModified = 304,
-				BadRequest = 400,
-				Unauthorized = 401,
-				NotFound = 404,
-				Conflict = 409,
-				PreconditionFailed = 412,
-				InternalServerError = 500
+			enum Codes : long {
+				OK = 200l,
+				Created = 201l,
+				Accepted = 202l,
+				NotModified = 304l,
+				BadRequest = 400l,
+				Unauthorized = 401l,
+				NotFound = 404l,
+				Conflict = 409l,
+				PreconditionFailed = 412l,
+				InternalServerError = 500l
 			};
 
 			struct {
@@ -84,8 +84,8 @@ namespace CCC {
 			};
 
 			struct FindOptions {
-				long limit = 25;
-				long skip = 0;
+				long limit = 25l;
+				long skip = 0l;
 				json selector;
 				json fields;
 				json sort;
@@ -97,8 +97,8 @@ namespace CCC {
 			};
 			struct AllDBsOptiions {
 				bool descending = false;
-				long limit = 0;
-				long skip = 0;
+				long limit = 0l;
+				long skip = 0l;
 				std::string startkey = ""s;
 			};
 
@@ -107,7 +107,7 @@ namespace CCC {
 			json meta();
 			json allDBs(const AllDBsOptiions &options);
 			bool up();
-			json uuids(unsigned long count = 1);
+			json uuids(unsigned long count = 1ul);
 			std::string favicon();
 			bool dbExists(const std::string &name);
 			json getDB(const std::string &name);

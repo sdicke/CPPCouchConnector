@@ -26,7 +26,7 @@ namespace CCC {
 			bool up();
 			std::vector<Database> databases(const DataBaseConnection::AllDBsOptiions &options = {});
 			bool databaseExists(const std::string &name);
-			std::vector<std::string> uuids(const long count = 25);
+			std::vector<std::string> uuids(const long count = 25l);
 			std::string uuid();
 			std::string favicon();
 			std::optional<DBC::CreateDatabaseResult> createDatabase(const std::string &name);
