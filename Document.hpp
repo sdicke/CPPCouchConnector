@@ -32,7 +32,8 @@ namespace CCC {
 			std::string uuid();
 			std::string revision();
 			void setRevision(const std::string &revision);
-			json content();
+			json json_content();
+			std::string content();
 			void setContent(json json);
 			std::vector<std::string> revisions();
 			bool purge(std::vector<std::string> revisions);

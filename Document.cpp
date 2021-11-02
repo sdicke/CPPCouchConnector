@@ -19,14 +19,18 @@ std::string Document::uuid() {
 	return this->data.uuid;
 }
 
-json Document::content() {
+json Document::json_content() {
 	const auto revision = this->data.revision;
 	return this->get(GetType::Content, revision);
 }
 
+std::string Document::content() {
+	return this->json_content().as_string();
+}
+
 void Document::setContent(json json) {
 	const auto name = this->data.db;
-	const auto revision = this->data.revision;
+	const auto revision = this->revisions().back();
 	const auto uuid = this->data.uuid;
 	this->data.connection.get()->updateDocument(name, uuid, revision, json);
 }
@@ -37,9 +41,12 @@ std::vector<std::string> Document::revisions() {
 	const auto current = temp["_rev"s];
 	result.push_back(current.as_string());
 	const auto revs = temp["_revisions"s]["ids"s];
-	for (const auto &current : revs.array_range()){
-		const auto tmp = current.as_string();
-		result.push_back(tmp);
+	const auto count = temp["_revisions"s]["start"].as_integer<int>();
+	if (count > 1) {
+		for (const auto &current : revs.array_range()){
+			const auto tmp = current.as_string();
+			result.push_back(tmp);
+		}
 	}
 	std::reverse(result.begin(), result.end());
 	return result;
