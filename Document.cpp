@@ -72,7 +72,11 @@ json Document::get(const Document::GetType type, const std::string &revision) {
 	return tmp;;
 }
 
-std::string Document::revision() {
+std::string Document::latest_revision() {
+	return this->revisions().back();
+}
+
+std::string Document::revision_of_content() {
 	return this->data.revision;
 }
 

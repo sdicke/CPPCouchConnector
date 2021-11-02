@@ -30,7 +30,8 @@ namespace CCC {
 			Document(const std::string &uuid, const std::string &db, const std::string &revision, std::shared_ptr<DataBaseConnection> connection);
 			Document(const Arguments &arguments);
 			std::string uuid();
-			std::string revision();
+			std::string latest_revision();
+			std::string revision_of_content();
 			void setRevision(const std::string &revision);
 			json json_content();
 			std::string content();
