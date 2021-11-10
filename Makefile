@@ -2,7 +2,8 @@ CC		= g++
 STANDARD	= -std=c++20
 ERROPTS		= -Wall -Wextra -Werror 
 ADDOPTS		= -O2 -pthread -fstack-protector-strong -fPIC
-FLAGS		= $(STANDARD) $(ERROPTS) $(ADDOPTS)
+INC			= -I external/jsoncons/include/
+FLAGS		= $(STANDARD) $(ERROPTS) $(ADDOPTS) $(INC)
 LIBS		= -l cpr -l curl
 CALL		= $(CC) $(FLAGS)
 TARGET		= /usr/local
