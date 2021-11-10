@@ -7,8 +7,10 @@ Please not that this library is in a alpha state at the moment.
 # Dependencies
 
 * [cpr](https://github.com/libcpr/cpr): Must be installed within the search path (/usr/local/ for example)
-* [jsoncons](https://github.com/danielaparker/jsoncons): The header files must be available within the search path (/usr/local/include for example)
 * [libcurl](https://github.com/curl/curl): Must be installed within the search path
+
+# JSON processing
+For JSON processing the library  [jsoncons](https://github.com/danielaparker/jsoncons) is used. It is linked as submodule within this repository.
 
 # Limitations
 
@@ -38,5 +40,6 @@ GNU Make is used as the project`s build system.
 ```
 git clone https://github.com/sdicke/CPPCouchConnector
 cd CPPCouchConnector
+git submodule update --init
 make .
 ```
