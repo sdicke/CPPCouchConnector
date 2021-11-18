@@ -105,8 +105,6 @@ bool DataBaseConnection::dbExists(const std::string &name) {
 
 json DataBaseConnection::getDB(const std::string &name)  {
 	const auto result = this->data.network->perform(name, Method::GET);
-	//long size.active //Bytes
-	//long sizes.external Uncompressed
 	const auto json = json::parse(result.text);
 	return json;
 }
