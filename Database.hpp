@@ -4,8 +4,6 @@
 #include <string>
 #include <vector>
 
-#include <jsoncons/json.hpp>
-
 #include "DataBaseConnection.hpp"
 #include "Document.hpp"
 
