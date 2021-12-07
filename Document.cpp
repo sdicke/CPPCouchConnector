@@ -86,7 +86,7 @@ void Document::setRevision(const std::string &revision) {
 
 bool Document::purge(std::vector<std::string> revisions){
 	json temp;
-	temp[this->data.uuid] = "[]"s;
+	temp[this->data.uuid] = json::array();
 	for (const auto &current : revisions){
 		temp[this->data.uuid].emplace_back(current);
 	}
