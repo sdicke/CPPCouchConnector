@@ -3,6 +3,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 #include "DataBaseConnection.hpp"
 #include "Document.hpp"
@@ -17,12 +18,13 @@ namespace CCC {
 
 		public:
 			typedef DataBaseConnection::DeleteDocumentResult DeleteResult;
+			typedef std::unordered_map<std::string, std::string> Map;
 
 			Database(std::shared_ptr<DataBaseConnection> connection, const std::string &name);
 			Document createDocument(const json &content, std::string uuid = ""s);
 			DeleteResult removeDocument(Document &document);
 			std::vector<Document> documents();
-			void findDocument(const std::string &name);
+			std::vector<std::string> findDocument(const Map &map);
 			std::string name();
 			bool compact();
 			long maximalNumberOfRevisions();

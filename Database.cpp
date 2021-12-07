@@ -44,6 +44,24 @@ std::vector<Document> Database::documents() {
 	return docs;
 }
 
+std::vector<std::string> Database::findDocument(const Map &map){
+	std::vector<std::string> result;
+	const auto name = this->data.name;
+	DataBaseConnection::FindOptions options;
+	json selector;
+	for (const auto &current : map){
+		selector[current.first] = current.second;
+	}
+	options.selector = selector;
+	auto data = this->data.connection->findDocs(name, options);
+	if (data.second == DataBaseConnection::FindResult::OK){
+		for (const auto &current : data.first.array_range()){
+			result.push_back(current["_id"].as_string());
+		}
+	}
+	return result;
+}
+
 std::string Database::name() {
 	return this->data.name;
 }
