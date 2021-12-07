@@ -18,7 +18,7 @@ This library implements at the moment just implements a minimal part of the API 
 
 # Usage
 
-```` 
+```cpp
 #include <memory>
 #include <cppcouchconnector/Network.hpp>
 #include <cppcouchconnector/DataBaseConnection.hpp>
@@ -31,7 +31,7 @@ int main(int argc, char **argv){
 	auto network = std::make_shared<Network>(_server, "5984", _user, _password);
 	auto dbc = std::make_shared<DataBaseConnection>(network);
 }
-```` 
+```
 
 # Build
 
