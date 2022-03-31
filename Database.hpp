@@ -22,6 +22,7 @@ namespace CCC {
 
 			Database(std::shared_ptr<DataBaseConnection> connection, const std::string &name);
 			Document createDocument(const json &content, std::string uuid = ""s);
+			Document createDocument(const json &content);
 			DeleteResult removeDocument(Document &document);
 			std::vector<Document> documents();
 			std::vector<std::string> findDocument(const Map &map);

@@ -1,3 +1,5 @@
+#include <array>
+#include <uuid.h>
 #include "Database.hpp"
 
 using namespace CCC;
@@ -15,13 +17,31 @@ Document Database::createDocument(const json &content, std::string uuid) {
 		for (const auto &current : result.array_range()){
 			uuids.push_back(current.as_string());
 		}
-		const auto uuid = uuids.at(0ul);
+		uuid = uuids.at(0ul);
 	}
 	const auto result = this->data.connection->createDocument(this->data.name, uuid, body);
 	const auto real_uuid = result["id"s].to_string();
 	const auto revision = result["rev"s].to_string();
 	const auto document = Document(uuid, this->data.name, revision, this->data.connection);
 	return document;
+}
+
+Document Database::createDocument(const json &content){
+	std::array<uuids::uuid, 16> data;
+	for (unsigned long i = 0; i < 16; ++i){
+		std::random_device device;
+		auto seed = std::array<int, std::mt19937::state_size> {};
+		std::generate(std::begin(seed), std::end(seed), std::ref(device));
+		std::seed_seq seq(std::begin(seed), std::end(seed));
+		std::mt19937 generator(seq);
+		uuids::uuid_random_generator generation{generator};
+		data[i] = generation();
+	}
+	std::string idstring;
+	for (const auto &current : data){
+		idstring += uuids::to_string(current);
+	}
+	return this->createDocument(content, idstring);
 }
 
 Database::DeleteResult Database::removeDocument(Document &document) {

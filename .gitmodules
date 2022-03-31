@@ -1,3 +1,6 @@
 [submodule "jsoncons"]
 	path = external/jsoncons
 	url = https://github.com/danielaparker/jsoncons
+[submodule "external/stduuid"]
+	path = external/stduuid
+	url = https://github.com/mariusbancila/stduuid
