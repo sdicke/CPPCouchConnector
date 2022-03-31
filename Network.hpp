@@ -30,7 +30,7 @@ namespace CCC {
 
 			Network(const std::string &target, const std::string &port, const std::string &user, const std::string &password);
 			Network(const Arguments &arguments);
-			cpr::Response perform(const std::string &path, Method method, const cpr::Body &body = {});
+			cpr::Response perform(const std::string &path, const Method method, const cpr::Body &body = {});
 
 		private:
 			std::string buildURL(const std::string &path) const noexcept;

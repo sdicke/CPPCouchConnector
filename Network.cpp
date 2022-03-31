@@ -20,7 +20,7 @@ void Network::createSession(const std::string &user, const std::string &password
 	this->data.cookies = response.cookies;
 }
 
-cpr::Response Network::perform(const std::string &path, Method method, const cpr::Body &body) {
+cpr::Response Network::perform(const std::string &path, const Method method, const cpr::Body &body) {
 	cpr::Response response;
 	const auto url_string = this->buildURL(path);
 	cpr::Url url(url_string);
