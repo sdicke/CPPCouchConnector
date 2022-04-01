@@ -2,7 +2,8 @@ CC		= g++
 STANDARD	= -std=c++20
 ERROPTS		= -Wall -Wextra -Werror 
 ADDOPTS		= -O2 -pthread -fstack-protector-strong -fPIC
-INC		= -I external/jsoncons/include/ -I external/stduuid/include/
+INC		= -I external/jsoncons/include/ 
+INC2	= -I external/stduuid/include/
 FLAGS		= $(STANDARD) $(ERROPTS) $(ADDOPTS) $(INC)
 LIBS		= -l cpr -l curl
 CALL		= $(CC) $(FLAGS)
@@ -18,7 +19,7 @@ cppcouchconnector: Document.o Database.o Network.o Server.o DataBaseConnection.o
 		$(CC) $(LIBS) -shared *.o -o $(BINARY)
 
 Database.o: Database.hpp Database.cpp
-		$(CALL) -c Database.cpp -o Database.o
+		$(CALL) $(INC2) -c Database.cpp -o Database.o
 
 DataBaseConnection.o: DataBaseConnection.hpp DataBaseConnection.cpp
 		$(CALL) -c DataBaseConnection.cpp -o DataBaseConnection.o
