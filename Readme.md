@@ -6,8 +6,9 @@ Please not that this library is in a alpha state at the moment.
 
 # Dependencies
 
-* [cpr](https://github.com/libcpr/cpr): Must be installed within the search path (/usr/local/ for example)
-* [libcurl](https://github.com/curl/curl): Must be installed within the search path
+The used library cpr needs some depencies, which development files must be located within the search path for a succesful build of CPPCouchConnector:
+* libcurl
+* libopenssl
 
 # JSON processing
 For JSON processing the library  [jsoncons](https://github.com/danielaparker/jsoncons) is used. It is linked as submodule within this repository.
@@ -41,5 +42,11 @@ GNU Make is used as the project`s build system.
 git clone https://github.com/sdicke/CPPCouchConnector
 cd CPPCouchConnector
 git submodule update --init
+cmake -S external/cpr -B external/cpr
+make external/cpr
+cd ../..
 make .
 ```
+If you want to keep it simpler, you can execute the build.sh script.
+
+If you want to create a smaller binary, you can use the make target nodebug alternatively.

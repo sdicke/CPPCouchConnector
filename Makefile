@@ -18,6 +18,9 @@ all: cppcouchconnector
 cppcouchconnector: Document.o Database.o Network.o Server.o DataBaseConnection.o
 		$(CC) $(LIBS) -shared *.o -o $(BINARY)
 
+nodebug: Document.o Database.o Network.o Server.o DataBaseConnection.o
+		$(CC) $(LIBS) -shared -s *.o -o $(BINARY)
+
 Database.o: Database.hpp Database.cpp
 		$(CALL) $(INC2) -c Database.cpp -o Database.o
 
