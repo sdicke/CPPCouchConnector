@@ -3,7 +3,7 @@ STANDARD	= -std=c++20
 ERROPTS		= -Wall -Wextra -Werror 
 ADDOPTS		= -O2 -pthread -fstack-protector-strong -fPIC
 INC		= -I external/jsoncons/include/ 
-INC2	= -I external/stduuid/include/
+INC2		= -I external/stduuid/include/
 FLAGS		= $(STANDARD) $(ERROPTS) $(ADDOPTS) $(INC)
 LIBS		= -l cpr -l curl
 CALL		= $(CC) $(FLAGS)
