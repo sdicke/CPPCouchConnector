@@ -3,4 +3,7 @@
 	url = https://github.com/danielaparker/jsoncons
 [submodule "external/stduuid"]
 	path = external/stduuid
-	url = https://github.com/mariusbancila/stduuid
+	url = https://github.com/mariusbancila/stduuid.git
+[submodule "external/cpr"]
+	path = external/cpr
+	url = https://github.com/libcpr/cpr.git
