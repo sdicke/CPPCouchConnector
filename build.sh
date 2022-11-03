@@ -1,8 +1,7 @@
 #!/bin/bash
 
 git submodule update --init
-cd external/cpr
-cmake
-make .
+cmake -S external/cpr -B external/cpr
+make external/cpr
 cd ../..
 make .
