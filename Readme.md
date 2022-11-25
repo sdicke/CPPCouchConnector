@@ -47,6 +47,6 @@ make external/cpr
 cd ../..
 make .
 ```
-If you want to keep it simpler, you can execute the build.sh script.
+If you want to keep it simpler, you can execute the `build.sh` script.
 
 If you want to create a smaller binary, you can use the make target nodebug alternatively.
